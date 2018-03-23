@@ -21,7 +21,7 @@
     <title>vk</title>
   </head>
   <body>
-    <h1>vk</h1>
+    <h1>fb</h1>
 
 	<?php
 		if($vk->auth_status){
