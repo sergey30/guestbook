@@ -18,18 +18,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title></title>
+    <title>vk</title>
   </head>
   <body>
     <h1>vk</h1>
 
 	<?php
 		if($vk->auth_status){
-			echo("Социальный ID пользователя: ".$vk->user_info["id"]);
+			echo("ID: ".$vk->user_info["id"]);
 			echo("<br />");
-			echo("Имя пользователя: ".$vk->user_info["first_name"]);
+			echo("Name: ".$vk->user_info["first_name"]);
 			echo("<br />");
-			echo("Фамилия пользователя: ".$vk->user_info["last_name"]);
+			echo("Surname: ".$vk->user_info["last_name"]);
 		} else {
 			echo("<a href='" . $vk->get_link() . "'>Войти</a>");
 		}
