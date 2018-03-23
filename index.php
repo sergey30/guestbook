@@ -21,7 +21,7 @@
     <title></title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <h1>vk</h1>
 
 	<?php
 		if($vk->auth_status){
