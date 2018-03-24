@@ -1,5 +1,5 @@
 <?php
-class VKAuth{
+class FBAuth{
 	public $settings = array();
 	public $auth_status = false;
 	public $user_info = array();
@@ -18,21 +18,22 @@ class VKAuth{
 				"code" => $code,
 				"redirect_uri" => $this->settings["redirect_uri"]
 			)));
+			//
+			echo ('$query - ' . $query . '<br>');
 
-			$token = json_decode(file_get_contents("https://oauth.vk.com/access_token?".$query), true);
+			$token = json_decode(file_get_contents("https://graph.facebook.com/v2.12/oauth/access_token?".$query), true);
+			//
+			echo '$token - ' . $token;
 
 			if(isset($token["access_token"])){
 				$query = urldecode(http_build_query(array(
-					"user_ids" => $token["user_id"],
-					"fields" => "id,first_name,last_name",
 					"access_token" => $token["access_token"],
-					"v" => "5.73"
+					"fields" => "id,first_name,last_name"
 				)));
 
-				$this->user_info = json_decode(file_get_contents("https://api.vk.com/method/users.get?".$query), true);
+				$this->user_info = json_decode(file_get_contents("https://graph.facebook.com/me?".$query), true);
 
-				if(isset($this->user_info["response"][0]["id"])){
-					$this->user_info = $this->user_info["response"][0];
+				if(isset($this->user_info["id"])){
 					$this->auth_status = true;
 					return true;
 				}
@@ -48,7 +49,7 @@ class VKAuth{
 				"redirect_uri" => $this->settings["redirect_uri"],
 				"response_type" => "code"
 			)));
-			return "https://oauth.vk.com/authorize?".$query;
+			return "https://www.facebook.com/v2.12/dialog/oauth?".$query;
 		}
 		return false;
 	}

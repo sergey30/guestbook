@@ -1,14 +1,14 @@
 <?php
 	require_once("oauth.php");
 
-	$vk  = new VKAuth(array(
-		"client_id" => "6419214",
-		"client_secret" => "4MNA0DXg0lvm6b01uaIx",
-		"redirect_uri" => "http://fortest.xyz"
+	$fb  = new FBAuth(array(
+		"client_id" => "421992874923976",
+		"client_secret" => "9b3e24d60a545f65441867084dabcf80",
+		"redirect_uri" => "https://fortest.xyz/"
 	));
 
 	if(isset($_GET["code"])){
-		$vk->auth($_GET["code"]);
+		$fb->auth($_GET["code"]);
 	}
 ?>
 
@@ -24,14 +24,14 @@
     <h1>fb</h1>
 
 	<?php
-		if($vk->auth_status){
-			echo("ID: ".$vk->user_info["id"]);
+		if($fb->auth_status){
+			echo("ID: ".$fb->user_info["id"]);
 			echo("<br />");
-			echo("Name: ".$vk->user_info["first_name"]);
+			echo("Name: ".$fb->user_info["first_name"]);
 			echo("<br />");
-			echo("Surname: ".$vk->user_info["last_name"]);
+			echo("Surname: ".$fb->user_info["last_name"]);
 		} else {
-			echo("<a href='" . $vk->get_link() . "'>Войти</a>");
+			echo("<a href='" . $fb->get_link() . "'>Войти</a>");
 		}
 	?>
 
