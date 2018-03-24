@@ -18,12 +18,8 @@ class FBAuth{
 				"code" => $code,
 				"redirect_uri" => $this->settings["redirect_uri"]
 			)));
-			//
-			echo ('$query - ' . $query . '<br>');
 
 			$token = json_decode(file_get_contents("https://graph.facebook.com/v2.12/oauth/access_token?".$query), true);
-			//
-			echo '$token - ' . $token;
 
 			if(isset($token["access_token"])){
 				$query = urldecode(http_build_query(array(
