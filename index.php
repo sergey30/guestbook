@@ -1,42 +1,34 @@
 <?php
-	require_once("oauth.php");
+session_start(); // старт сессии
+require 'mdl/functions.php'; // подключаем разные функции
+require_once 'mdl/oauth.php'; // подключаем класс
 
-	$fb  = new FBAuth(array(
-		"client_id" => "421992874923976",
-		"client_secret" => "9b3e24d60a545f65441867084dabcf80",
-		"redirect_uri" => "https://fortest.xyz/"
-	));
+$fb  = new FBAuth(array(
+    "client_id" => "421992874923976",
+    "client_secret" => "9b3e24d60a545f65441867084dabcf80",
+    "redirect_uri" => "https://fortest.xyz/"
+));
 
-	if(isset($_GET["code"])){
-		$fb->auth($_GET["code"]);
-	}
+if(isset($_GET["code"])){
+    $fb->auth($_GET["code"]);
+}
+
+$link_fb = $fb->get_link(); // ссылка переход на фб для ввода логина, пароля
+$first_name = $fb->user_info["first_name"];
+$last_name = $fb->user_info["last_name"];
+$id_social_net = $fb->user_info["id"];
+$ip_user = $_SERVER['REMOTE_ADDR'];
+
+
+if (isset($_SESSION['id']) || (isset($_COOKIE['login']) && isset($_COOKIE['password']))) {
+    echo "string";
+} else {
+    if($fb->auth_status){
+        addUser($first_name, $last_name, $id_social_net);
+        require 'tpl/messages.php';
+    } else {
+        require 'tpl/authorization.php';
+    }
+}
+
 ?>
-
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>fb</title>
-  </head>
-  <body>
-    <h1>fb</h1>
-
-	<?php
-		if($fb->auth_status){
-			echo("ID: ".$fb->user_info["id"]);
-			echo("<br />");
-			echo("Name: ".$fb->user_info["first_name"]);
-			echo("<br />");
-			echo("Surname: ".$fb->user_info["last_name"]);
-		} else {
-			echo("<a href='" . $fb->get_link() . "'>Войти</a>");
-		}
-	?>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
-</html>
