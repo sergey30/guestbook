@@ -9,9 +9,14 @@ $fb  = new FBAuth(array(
     "redirect_uri" => "https://fortest.xyz/"
 )); // создаем экземпляр класса для получения данных из фб
 
+// если пришел код из фб, то запустить метод получения токена
 if(isset($_GET["code"])){
     $fb->auth($_GET["code"]);
-} // если пришел код из фб, то запустить метод получения токена
+}
+
+if($_GET['action'] === 'out'){
+    out();
+}
 
 $link_fb = $fb->get_link(); // ссылка переход на фб для ввода логина, пароля
 $id_social_net = $fb->user_info["id"];
@@ -21,13 +26,8 @@ $user_ip = $_SERVER['REMOTE_ADDR'];
 $user_browser = $_SERVER["HTTP_USER_AGENT"];
 $date_created = date('Y-m-d H:i:s');
 
-// получить id из базы и сверяем с sessin id если одниковые вывести шаблон функцией show_user_data();
 if ($_SESSION['id']) {
-    get_id($_SESSION['id']);
-}
-
-if (1 === 0) {
-    require 'tpl/tpl2.php';
+    show_user_data();
 } else {
     if($fb->auth_status){ //была ли передана информация с фб?
         add_user($id_social_net, $first_name, $last_name, $user_ip, $user_browser, $date_created);

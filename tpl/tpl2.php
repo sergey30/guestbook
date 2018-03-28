@@ -19,9 +19,18 @@
             <div class="col-2 mr-2 p-2 text-primary text-center border border-primary">
                 last name <?php echo $array['last_name'] ?>
             </div>
-            <a href="#" class="col-2 p-2 btn btn-outline-secondary rounded-0">
+
+            <a href="https://fortest.xyz/?action=out" class="col-2 p-2 btn btn-outline-secondary rounded-0">
                 Logout
             </a>
+
+            <!-- <div class="col-2 btn btn-outline-secondary rounded-0">
+                <form class="" action="index.html" method="post">
+                    <button type="submit" class="">Logout</button>
+                </form>
+            </div> -->
+
+
         </div>
 
         <?php require 'list_scripts.html'; ?>
