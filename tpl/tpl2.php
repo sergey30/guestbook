@@ -9,12 +9,13 @@
         <div class="row">
             <h1 class="col-12 text-center bg-primary text-white p-4 mt-2 mb-0">Guestbook</h1>
         </div>
-
         <div class="row">
             <div class="col-9 mt-4">
-                <form class="d-flex">
-                    <textarea class="form-control rounded-0" aria-label="With textarea"></textarea>
-                    <button type="submit" class="btn btn-primary ml-2 rounded-0">Submit</button>
+                <form action="https://fortest.xyz/" method="post" class="d-flex">
+                    <textarea name="message" class="form-control rounded-0"></textarea>
+                    <button type="submit" name="submit" value="ok" class="btn btn-primary ml-2 rounded-0">
+                        Submit
+                    </button>
                 </form>
             </div>
             <div class="col-3">
@@ -34,7 +35,7 @@
                 </a>
             </div>
         </div>
-
+        
 
 
         <?php require 'list_scripts.html'; ?>

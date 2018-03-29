@@ -20,6 +20,10 @@ if($_GET['action'] === 'out'){
     out();
 }
 
+if ($_POST['submit'] === 'ok') {
+    add_message();
+}
+
 $link_fb = $fb->get_link(); // ссылка переход на фб для ввода логина, пароля
 $id_social_net = $fb->user_info["id"];
 $first_name = $fb->user_info["first_name"];
