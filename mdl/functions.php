@@ -1,5 +1,5 @@
 <?php
-// устанавливаем соединение и записываем данные полученные из фб в базу
+// запрос из базы пользователя с данными переданными из фб, если в $array возвращается false создать новую запись в базе с полученными данными, если true ничего не делать
 function add_user($id_social_net, $first_name, $last_name, $user_ip, $user_browser, $date_created) {
     try {
         $dbh = new PDO('mysql:dbname=guestbook_db;host=localhost', 'guestbook', '1');
@@ -48,7 +48,7 @@ function show_user_data() {
     require 'tpl/tpl2.php';
 }
 
-// добавить переменную  id в session
+// взять данные полученные из фб, найти соответствующую им запись в базе и id этой записи сохранить в переменную сессии
 function add_id_in_session($id_social_net, $first_name, $last_name) {
     try {
         $dbh = new PDO('mysql:dbname=guestbook_db;host=localhost', 'guestbook', '1');
@@ -69,23 +69,23 @@ function add_id_in_session($id_social_net, $first_name, $last_name) {
 }
 
 // получить id пользователя из базы
-function get_id($id) {
-    try {
-        $dbh = new PDO('mysql:dbname=guestbook_db;host=localhost', 'guestbook', '1');
-    } catch (Exception $e) {
-        die($e->getMessage());
-    }
+// function get_id($id) {
+//     try {
+//         $dbh = new PDO('mysql:dbname=guestbook_db;host=localhost', 'guestbook', '1');
+//     } catch (Exception $e) {
+//         die($e->getMessage());
+//     }
+//
+//     $sth = $dbh->prepare("SELECT * FROM users WHERE id = :id");
+//     $sth->execute(array('id' => $_SESSION['id']));
+//     $array = $sth->fetch(PDO::FETCH_ASSOC);
+//     print_r($array);
+//
+// }
 
-    $sth = $dbh->prepare("SELECT * FROM users WHERE id = :id");
-    $sth->execute(array('id' => $_SESSION['id']));
-    $array = $sth->fetch(PDO::FETCH_ASSOC);
-    print_r($array);
-
-}
-
+// выход из аккаунта при нажатие на кнопку
 function out() {
     unset($_SESSION['id']);
     header('Location: https://fortest.xyz/');
 }
-
  ?>
