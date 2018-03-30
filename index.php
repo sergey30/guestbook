@@ -31,7 +31,6 @@ $last_name = $fb->user_info["last_name"];
 $user_ip = $_SERVER['REMOTE_ADDR'];
 $user_browser = $_SERVER["HTTP_USER_AGENT"];
 $date_created = date('Y-m-d H:i:s');
-// $session_id = $_SESSION['id'];
 
 // если переменная id существует в сессии, то вывести главную страницу
 if ($_SESSION['id']) {
