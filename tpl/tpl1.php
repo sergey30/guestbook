@@ -12,7 +12,6 @@
             <!-- ссылка на вход через фб -->
             <a href="<?php echo $link_fb ?>" class="btn btn-primary rounded-0 ">Login with Facebook</a>
         </div>
-
         <?php require 'list_scripts.html'; ?>
     </body>
 </html>

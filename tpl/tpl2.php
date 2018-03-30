@@ -11,9 +11,10 @@
         </div>
         <div class="row">
             <div class="col-9 mt-4">
-                <form action="https://fortest.xyz/" method="post" class="d-flex">
+                <form action="" method="post" id="send_message" class="d-flex">
+                    <input type="hidden" name="id" value="<?php echo $_SESSION['id'] ?>">
                     <textarea name="message" class="form-control rounded-0"></textarea>
-                    <button type="submit" name="submit" value="ok" class="btn btn-primary ml-2 rounded-0">
+                    <button type="submit" name="submit" value="ok" id="btn_send_message" class="btn btn-primary ml-2 rounded-0">
                         Submit
                     </button>
                 </form>
@@ -36,8 +37,7 @@
             </div>
         </div>
 
-
-
         <?php require 'list_scripts.html'; ?>
+        <script src="../js/ajax.js"></script>
     </body>
 </html>
