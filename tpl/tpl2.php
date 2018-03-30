@@ -37,6 +37,8 @@
             </div>
         </div>
 
+        <div id="result_form"><div>
+
         <?php require 'list_scripts.html'; ?>
         <script src="../js/ajax.js"></script>
     </body>
