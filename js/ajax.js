@@ -15,7 +15,15 @@ function sendAjaxForm(send_message, url) {
         data: $("#"+send_message).serialize(),
         success: function(response) {
         	result = $.parseJSON(response);
-        	$('#result_form').html('Имя: '+result.message);
+
+            var message = 0;
+            for (var i = 0; i < result.length; i++) {
+                message = result[i].message;
+                document.write('<div style="color: blue">' + message + '</div>');
+                //$('#result_form').html('<div style="color: blue">' + message + '</div>');
+            }
+
+
     	}
  	});
 }

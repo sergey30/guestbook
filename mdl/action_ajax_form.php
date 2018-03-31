@@ -1,5 +1,4 @@
 <?php
-
 if (isset($_POST["message"]) && isset($_POST["id"])) {
     try {
         $dbh = new PDO('mysql:dbname=guestbook_db;host=localhost', 'guestbook', '1');
@@ -27,10 +26,8 @@ if (isset($_POST["message"]) && isset($_POST["id"])) {
     $sth = $dbh->prepare("SELECT message FROM messages WHERE
                             uid = :uid");
     $sth->execute(array('uid' => $_POST['id']));
-    $array = $sth->fetch(PDO::FETCH_ASSOC);
-
+    $array = $sth->fetchAll(PDO::FETCH_ASSOC);
     echo json_encode($array);
 
 }
-
 ?>
