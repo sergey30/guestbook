@@ -6,19 +6,15 @@ function sendAjaxForm(send_message, url) {
         data: $("#"+send_message).serialize(),
         success: function(response) {
             $("#send_message textarea").val(""); // очистка формы после отправки
-            $("#result_form").html("");
-            $("#result_form").html("<div class='m-1'></div>");
+            $("div .m-1").remove();
         	result = $.parseJSON(response);
             var message = 0;
             for (var i = 0; i < result.length; i++) {
                 message = result[i].message;
-                $("#result_form div").after($("<div class='m-1'></div>").text(message));
-
-
-
-                // при выполнение функции сначала должно удалиться все код в диве #result_form а потом при цикле for по одной строчке добавляться, при слежующем вызове функции, опять  удаляется весь код с контентом и заново запоняется из базы
-    	}
- 	});
+                $("#result_form").after($("<div class='m-1'></div>").text(message));
+    	    }
+        }
+    });
 }
 
 $(document).ready(function() {
