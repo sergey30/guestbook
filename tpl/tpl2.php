@@ -18,6 +18,7 @@
                         Submit
                     </button>
                 </form>
+                <div id="result_form" class="mt-5"></div>
             </div>
             <div class="col-3">
                 <!-- будут показаны краткие данные пользователя -->
@@ -37,7 +38,7 @@
             </div>
         </div>
 
-        <div id="result_form"><div>
+
 
         <?php require 'list_scripts.html'; ?>
         <script src="../js/ajax.js"></script>
