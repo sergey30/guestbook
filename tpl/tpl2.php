@@ -18,7 +18,7 @@
                         Submit
                     </button>
                 </form>
-                <div id="result_form" class="mt-5"></div>
+                <div id="result_form" class="mt-3"></div>
             </div>
             <div class="col-3">
                 <!-- будут показаны краткие данные пользователя -->
