@@ -6,7 +6,8 @@ function sendAjaxForm(send_message, url) {
         data: $("#"+send_message).serialize(),
         success: function(response) {
             $("#send_message textarea").val(""); // очистка формы после отправки
-            $("div .m-1").remove();
+            $(".m-1").remove();
+            $("#result_form").html("<div class='m-1'></div>");
         	result = $.parseJSON(response);
             var message = 0;
             for (var i = 0; i < result.length; i++) {
