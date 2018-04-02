@@ -6,22 +6,12 @@ function sendAjaxForm(send_message, url) {
         data: $("#"+send_message).serialize(),
         success: function(response) {
             $("#send_message textarea").val(""); // очистка формы после отправки
-            $("#result_form .message").remove();
+            $("#result_form .m-1").remove();
         	result = $.parseJSON(response);
-            var id = "";
-            var first_name = "";
-            var last_name = "";
-            var date_created = "";
-            var message = "";
+            var message = 0;
             for (var i = 0; i < result.length; i++) {
-                id = result[i].id;
-                first_name = result[i].first_name;
-                last_name = result[i].last_name;
-                date_created = result[i].date_created;
                 message = result[i].message;
-                $(".message_data").remove();
-                $("#result_form").prepend($("<div class='message mt-3 mb-2'></div>").text(message));
-                $("#result_form .message").prepend($("<div class='message_data'></div>").text(first_name));
+                $("#result_form").prepend($("<div class='m-1'></div>").text(message));
     	    }
         }
     });

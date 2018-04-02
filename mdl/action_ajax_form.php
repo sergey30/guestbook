@@ -23,7 +23,7 @@ if (isset($_POST["message"]) && isset($_POST["id"])) {
                         'message' => $_POST['message'],
                         'date_created' => date('Y-m-d H:i:s')));
 
-    $sth = $dbh->prepare("SELECT id, first_name, last_name, date_created, message FROM messages WHERE
+    $sth = $dbh->prepare("SELECT message FROM messages WHERE
                             uid = :uid");
     $sth->execute(array('uid' => $_POST['id']));
     $array = $sth->fetchAll(PDO::FETCH_ASSOC);
