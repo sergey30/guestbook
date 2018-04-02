@@ -41,12 +41,12 @@ $(document).ready(function() {
 		}
 	);
 });
-
-$(function() {
-   $("#result_form .remove").click(
-       function() {
-           event.preventDefault();
-           alert("6");
-       }
-   );
-});
+//
+// $(function() {
+//    $("#result_form .remove").click(
+//        function() {
+//            event.preventDefault();
+//            alert("6");
+//        }
+//    );
+// });
