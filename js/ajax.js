@@ -21,7 +21,10 @@ function sendAjaxForm(send_message, url) {
                 message = result[i].message;
                 $(".message_data").remove();
                 $("#result_form").prepend($("<div class='message mt-3 mb-2'></div>").text(message));
-                $("#result_form .message").prepend($("<div class='message_data'></div>").text(first_name));
+                $("#result_form .message").prepend($("<div class='message_data d-flex text-primary'></div>"));
+                $(".message_data").append($("<div class='ml-2'></div>").text(first_name));
+                $(".message_data").append($("<div class='ml-2'></div>").text(last_name));
+                $(".message_data").append($("<div class='ml-2'></div>").text(date_created));
     	    }
         }
     });
