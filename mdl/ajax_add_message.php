@@ -1,4 +1,8 @@
 <?php
+if (isset($_FILES[file])) {
+    echo "yes";
+}
+
 if (isset($_POST["message"]) && isset($_POST["id"])) {
     try {
         $dbh = new PDO('mysql:dbname=guestbook_db;host=localhost', 'guestbook', '1');

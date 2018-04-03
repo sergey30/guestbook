@@ -11,13 +11,18 @@
         </div>
         <div class="row">
             <div class="col-9 mt-4">
-                <form action="" method="post" id="send_message" class="d-flex">
-                    <input type="hidden" name="id" value="<?php echo $_SESSION['id'] ?>">
-                    <textarea name="message" class="form-control rounded-0"></textarea>
-                    <button type="submit" name="submit" value="ok" id="btn_send_message" class="btn btn-primary ml-2 rounded-0">
-                        Submit
-                    </button>
+                <form action="" method="post" id="send_message" enctype="multipart/form-data" class="">
+                    <div class="d-flex">
+                        <input type="hidden" name="id" value="<?php echo $_SESSION['id'] ?>">
+                        <textarea name="message" class="form-control rounded-0"></textarea>
+                        <button type="submit" name="submit" value="ok" id="btn_send_message" class="btn btn-primary ml-2 rounded-0">
+                            Submit
+                        </button>
+                    </div>
+                    <input type="file" name="file"  class="mt-2">
                 </form>
+
+
                 <div id="result_form" class="mt-3"></div>
             </div>
             <div class="col-3">
