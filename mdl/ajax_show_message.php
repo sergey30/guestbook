@@ -1,4 +1,5 @@
 <?php
+// получение всех сообщений пользователя, id пользователя берется из $_POST["session_id"]
 if (isset($_POST["session_id"])) {
     try {
         $dbh = new PDO('mysql:dbname=guestbook_db;host=localhost', 'guestbook', '1');

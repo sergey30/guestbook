@@ -21,7 +21,7 @@ class FBAuth{
 				"code" => $code,
 				"redirect_uri" => $this->settings["redirect_uri"]
 			)));
-
+			// получить токен пользователя
 			$token = json_decode(file_get_contents("https://graph.facebook.com/v2.12/oauth/access_token?".$query), true);
 
 			if(isset($token["access_token"])){
@@ -29,7 +29,7 @@ class FBAuth{
 					"access_token" => $token["access_token"],
 					"fields" => "id,first_name,last_name"
 				)));
-
+				// получить данные пользователя
 				$this->user_info = json_decode(file_get_contents("https://graph.facebook.com/me?".$query), true);
 
 				if(isset($this->user_info["id"])){

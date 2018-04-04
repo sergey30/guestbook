@@ -5,7 +5,6 @@
         <title>Guestbook</title>
     </head>
     <body class="container">
-
         <div class="row">
             <h1 class="col-12 text-center bg-primary text-white p-4 mt-2 mb-0">Guestbook</h1>
         </div>
@@ -21,8 +20,6 @@
                     </div>
                     <input type="file" name="file"  class="mt-2">
                 </form>
-
-
                 <div id="result_form" class="mt-3"></div>
             </div>
             <div class="col-3">
