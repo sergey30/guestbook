@@ -14,5 +14,3 @@
 7. Работа функций добавления сообщения, удаления, предпросмотра - без
 перезагрузки страницы;
 8. Добавление визуальных эффектов так же приветствуется.
-
-![alt text](https://storage.jumpshare.com/preview/neZKmOidXpKVHI3xiRDyHiu2snD4oh7tlyNx8uTz88JZlrFpUPeoRy6L28ZtoI3kW3k2MMTUY0whhsqK3-1Pg90Iq-_ZMIwlJNqsu6s4bO0F1kR3dMUjedqC16uBUu85)
